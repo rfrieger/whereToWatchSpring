@@ -1,0 +1,38 @@
+
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: local
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform:
+    url:
+    username:
+    password:
+
+
+---
+spring:
+  profiles: dev
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform:
+    url:
+
+    username:
+    password:
+
+
