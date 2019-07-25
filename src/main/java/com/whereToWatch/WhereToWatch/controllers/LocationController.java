@@ -19,14 +19,19 @@ public class LocationController {
         return locationService.getAllLocations();
     }
 
-    @GetMapping("api/location/{id}")
-    public Location getLocationById(@PathVariable Integer id) {
-        return locationService.getLocationById(id);
-    }
-
     @GetMapping("api/locations/{city}")
     public Iterable<Location> getLocationsByCity(@PathVariable String city) {
         return locationService.getLocationsByCity(city);
+    }
+
+    @GetMapping("api/locations/{city}/{team}")
+    public Iterable<Location> findLocationsByCityAndTeam(@PathVariable String city, @PathVariable String team) {
+        return locationService.findAllbyCityAndTeam(city, team);
+    }
+
+    @PostMapping("api/location")
+        public Location createPost(@RequestBody Location location) {
+            return locationService.addLocation(location);
     }
 
 

@@ -17,10 +17,11 @@ public class Location {
     public Location(){};
 
     public Location(String name, String description, String city, String team) {
+        this.team = team;
         this.name = name;
         this.description = description;
         this.city = city;
-        this.team = team;
+
     }
 
     public Integer getLocation_id() {

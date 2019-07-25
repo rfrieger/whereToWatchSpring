@@ -4,6 +4,7 @@ public class Team {
     private Integer team_id;
     private String name;
 
+
     public Team(){ }
 
     public Integer getTeam_id() {

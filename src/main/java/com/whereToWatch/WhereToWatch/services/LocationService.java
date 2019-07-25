@@ -17,9 +17,15 @@ public class LocationService {
         return locationRepo.findAll();
     }
 
-    public Location getLocationById (Integer id) {return locationRepo.findById(id).get();}
-
     public Iterable<Location> getLocationsByCity(String city) {
-        return locationRepo.getAllByCity(city);
+        return locationRepo.findLocationsByCity(city);
     }
+
+    public Iterable<Location> findAllbyCityAndTeam(String city, String team) {
+        return locationRepo.findLocationsByCityAndAndTeam(city, team);
+    }
+
+    public Location addLocation(Location location) {return locationRepo.save(location);}
+
+
 }
