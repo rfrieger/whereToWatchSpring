@@ -5,7 +5,6 @@ import com.whereToWatch.WhereToWatch.repos.LocationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class LocationService {
@@ -19,6 +18,10 @@ public class LocationService {
 
     public Iterable<Location> getLocationsByCity(String city) {
         return locationRepo.findLocationsByCity(city);
+    }
+
+    public Iterable<Location> findLocationsbyTeam(String team) {
+        return locationRepo.findLocationsByTeam(team);
     }
 
     public Iterable<Location> findAllbyCityAndTeam(String city, String team) {

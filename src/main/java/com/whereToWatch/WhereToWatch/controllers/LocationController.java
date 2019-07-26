@@ -19,9 +19,14 @@ public class LocationController {
         return locationService.getAllLocations();
     }
 
-    @GetMapping("api/locations/{city}")
+    @GetMapping("api/locationsByCity/{city}")
     public Iterable<Location> getLocationsByCity(@PathVariable String city) {
         return locationService.getLocationsByCity(city);
+    }
+
+    @GetMapping("api/locationsByTeam/{team}")
+    public Iterable<Location> getLocationByTeam(@PathVariable String team) {
+        return locationService.findLocationsbyTeam(team);
     }
 
     @GetMapping("api/locations/{city}/{team}")
