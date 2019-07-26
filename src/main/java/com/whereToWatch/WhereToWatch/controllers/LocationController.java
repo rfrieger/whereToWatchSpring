@@ -14,24 +14,9 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
-    @GetMapping("api/locations")
-    public  Iterable<Location> getAllLocations() {
-        return locationService.getAllLocations();
-    }
-
-    @GetMapping("api/locationsByCity/{city}")
-    public Iterable<Location> getLocationsByCity(@PathVariable String city) {
-        return locationService.getLocationsByCity(city);
-    }
-
-    @GetMapping("api/locationsByTeam/{team}")
-    public Iterable<Location> getLocationByTeam(@PathVariable String team) {
-        return locationService.findLocationsbyTeam(team);
-    }
-
     @GetMapping("api/locations/{city}/{team}")
     public Iterable<Location> findLocationsByCityAndTeam(@PathVariable String city, @PathVariable String team) {
-        return locationService.findAllbyCityAndTeam(city, team);
+        return locationService.findAllLocations(city, team);
     }
 
     @PostMapping("api/location")
