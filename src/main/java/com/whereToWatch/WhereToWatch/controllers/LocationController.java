@@ -6,11 +6,10 @@ import com.whereToWatch.WhereToWatch.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @CrossOrigin
 public class LocationController {
+
     @Autowired
     private LocationService locationService;
 
@@ -20,11 +19,8 @@ public class LocationController {
     }
 
     @PostMapping("api/location")
-        public Location createPost(@RequestBody Location location) {
+        public Location addLocation (@RequestBody Location location) {
             return locationService.addLocation(location);
     }
-
-
-
 }
 

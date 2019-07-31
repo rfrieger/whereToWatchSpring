@@ -1,6 +1,8 @@
 package com.whereToWatch.WhereToWatch.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Location {
@@ -10,17 +12,20 @@ public class Location {
     private String name;
     private String description;
     private String city;
-
-//    @OneToMany
+    private String address;
     private String team;
+
+
+    private Team teams;
 
     public Location(){};
 
-    public Location(String name, String description, String city, String team) {
-        this.team = team;
+    public Location(String name, String description, String city, String team, String address) {
+
         this.name = name;
         this.description = description;
         this.city = city;
+        this.address = address;
 
     }
 
@@ -54,6 +59,15 @@ public class Location {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTeam() {

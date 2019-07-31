@@ -1,10 +1,22 @@
 package com.whereToWatch.WhereToWatch.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+
+@Entity
 public class Team {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer team_id;
     private String name;
 
-    private Location location;
+
+    public Team(Integer team_id, String name) {
+        this.team_id = team_id;
+        this.name = name;
+    }
     public Team(){ }
 
     public Integer getTeam_id() {
@@ -23,10 +35,5 @@ public class Team {
         this.name = name;
     }
 
-    public Team(Integer team_id, String name) {
-        this.team_id = team_id;
-        this.name = name;
 
-
-    }
 }

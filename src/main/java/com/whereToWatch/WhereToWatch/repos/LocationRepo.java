@@ -13,8 +13,4 @@ public interface LocationRepo extends CrudRepository<Location, Integer>  {
 
     Iterable<Location> findLocationsByCityAndAndTeam(String city, String name);
 
-
-
-
-
 }
