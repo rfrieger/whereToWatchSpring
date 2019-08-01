@@ -1,28 +1,17 @@
 package com.whereToWatch.WhereToWatch.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+public class TeamRequest {
 
-import javax.persistence.*;
-
-@Entity
-public class Team {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer team_id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "location_id", nullable = false)
-    @JsonBackReference
-    private Location location;
-
-
-    public Team(Integer team_id, String name) {
+    public TeamRequest(Integer team_id, String name) {
         this.team_id = team_id;
         this.name = name;
     }
-    public Team(){ }
+
+    public TeamRequest() {}
+
 
     public Integer getTeam_id() {
         return team_id;
@@ -39,6 +28,4 @@ public class Team {
     public void setName(String name) {
         this.name = name;
     }
-
-
 }

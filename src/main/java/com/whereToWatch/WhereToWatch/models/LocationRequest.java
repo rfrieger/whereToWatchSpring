@@ -1,15 +1,7 @@
 package com.whereToWatch.WhereToWatch.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+public class LocationRequest {
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-public class Location {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer location_id;
     private String name;
     private String description;
@@ -17,24 +9,16 @@ public class Location {
     private String address;
     private String team;
 
-    @OneToMany(cascade = CascadeType.ALL,
-                fetch = FetchType.LAZY,
-                mappedBy = "location")
-    @JsonManagedReference
-    private List<Team> teams = new ArrayList<>();
-
-
-
-    public Location(){};
-
-    public Location(String name, String description, String city, String team, String address) {
-
+    public LocationRequest(Integer location_id, String name, String description, String city, String address, String team) {
+        this.location_id = location_id;
         this.name = name;
         this.description = description;
         this.city = city;
         this.address = address;
-
+        this.team = team;
     }
+
+    public LocationRequest() {}
 
     public Integer getLocation_id() {
         return location_id;
@@ -67,7 +51,6 @@ public class Location {
     public void setCity(String city) {
         this.city = city;
     }
-
 
     public String getAddress() {
         return address;
