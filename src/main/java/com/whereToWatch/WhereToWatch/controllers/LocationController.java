@@ -15,6 +15,8 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
+
+
     @GetMapping("api/locations/{city}")
     public Iterable<Location> findByLocations(@PathVariable String city) {
         return locationService.findAllLocationsByCity(city);

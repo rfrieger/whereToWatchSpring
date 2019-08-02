@@ -30,10 +30,9 @@ public class LocationService {
         location.setCity(locationRequest.getCity());
         location.setDescription(locationRequest.getDescription());
         location.setName(locationRequest.getName());
-        location.setTeam(locationRequest.getTeam());
 
         location.getTeams().add(team);
-//        team.getLocations().add(location);
+        team.getLocations().add(location);
 
 //        teamRepo.save(team);
         return locationRepo.save(location);

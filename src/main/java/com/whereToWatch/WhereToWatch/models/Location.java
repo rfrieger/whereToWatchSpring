@@ -16,7 +16,6 @@ public class Location {
     private String description;
     private String city;
     private String address;
-    private String team;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
                 fetch = FetchType.LAZY,
@@ -74,14 +73,6 @@ public class Location {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
     }
 
     public List<Team> getTeams() {

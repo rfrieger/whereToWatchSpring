@@ -26,6 +26,7 @@ public class Team {
         this.team_id = team_id;
         this.name = name;
     }
+
     public Team(){ }
 
     public Integer getTeam_id() {
