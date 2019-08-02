@@ -1,7 +1,11 @@
 package com.whereToWatch.WhereToWatch.services;
 
 import com.whereToWatch.WhereToWatch.models.Location;
+
+import com.whereToWatch.WhereToWatch.models.LocationRequest;
+import com.whereToWatch.WhereToWatch.models.Team;
 import com.whereToWatch.WhereToWatch.repos.LocationRepo;
+import com.whereToWatch.WhereToWatch.repos.TeamRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,17 +16,36 @@ public class LocationService {
     @Autowired
     private  LocationRepo locationRepo;
 
-    public Iterable<Location> findAllLocations(String city, String team) {
-        if(city.equals("n")) {
-            return locationRepo.findLocationsByTeam(team);
-        } else if (team.equals("n")){
+    @Autowired
+    private TeamRepo teamRepo;
+
+    public Iterable<Location> findAllLocationsByCity(String city) {
             return locationRepo.findLocationsByCity(city);
-        } else{
-            return locationRepo.findLocationsByCityAndAndTeam(city, team);
-        }
     }
 
-    public Location addLocation(Location location) {return locationRepo.save(location);}
+    public Location addLocation(LocationRequest locationRequest, String teamName) {
+        Location location = new Location();
+        Team team = teamRepo.findTeamByName(teamName);
+        location.setAddress(locationRequest.getAddress());
+        location.setCity(locationRequest.getCity());
+        location.setDescription(locationRequest.getDescription());
+        location.setName(locationRequest.getName());
+        location.setTeam(locationRequest.getTeam());
+
+        location.getTeams().add(team);
+//        team.getLocations().add(location);
+
+//        teamRepo.save(team);
+        return locationRepo.save(location);
+    }
+
+
+     public  Location findLocationByCity(String city) {
+         return locationRepo.findLocationByCity(city);
+
+     }
+
+
 
 
 }

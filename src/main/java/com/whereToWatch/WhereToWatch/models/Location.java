@@ -1,5 +1,6 @@
 package com.whereToWatch.WhereToWatch.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -17,13 +18,11 @@ public class Location {
     private String address;
     private String team;
 
-    @OneToMany(cascade = CascadeType.ALL,
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
                 fetch = FetchType.LAZY,
-                mappedBy = "location")
-    @JsonManagedReference
+                mappedBy = "locations")
+    @JsonIgnoreProperties("locations")
     private List<Team> teams = new ArrayList<>();
-
-
 
     public Location(){};
 
@@ -83,5 +82,13 @@ public class Location {
 
     public void setTeam(String team) {
         this.team = team;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
     }
 }

@@ -9,8 +9,10 @@ public interface LocationRepo extends CrudRepository<Location, Integer>  {
 
     Iterable<Location> findLocationsByCity(String city);
 
-    Iterable<Location> findLocationsByTeam(String team);
+    Location findLocationByCity(String city);
 
-    Iterable<Location> findLocationsByCityAndAndTeam(String city, String name);
+//    Iterable<Location> findLocationsByTeam(String team);
+//
+//    Iterable<Location> findLocationsByCityAndAndTeam(String city, String name);
 
 }

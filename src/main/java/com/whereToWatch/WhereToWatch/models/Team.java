@@ -1,8 +1,11 @@
 package com.whereToWatch.WhereToWatch.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Team {
@@ -12,10 +15,11 @@ public class Team {
     private Integer team_id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "location_id", nullable = false)
-    @JsonBackReference
-    private Location location;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "team_location", joinColumns = {@JoinColumn(name = "team_id")},
+            inverseJoinColumns = {@JoinColumn(name = "location_id")})
+    @JsonIgnoreProperties("teams")
+    private List<Location> locations = new ArrayList<>();
 
 
     public Team(Integer team_id, String name) {
@@ -40,5 +44,11 @@ public class Team {
         this.name = name;
     }
 
+    public List<Location> getLocations() {
+        return locations;
+    }
 
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
 }
