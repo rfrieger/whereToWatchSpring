@@ -26,6 +26,11 @@ public class LocationController {
         return locationService.findLocationByCity(city);
     }
 
+    @GetMapping("api/locations/{city}/{team}")
+    public Iterable<Location> findLocationByCityAndTeam(@PathVariable String city, @PathVariable String team) {
+        return locationService.findLocationByCityAndTeam(city, team);
+    }
+
     @PostMapping("api/location/{teamName}")
         public Location addLocation (@RequestBody LocationRequest locationRequest, @PathVariable String teamName) {
             return locationService.addLocation(locationRequest, teamName);

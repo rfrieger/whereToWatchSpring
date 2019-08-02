@@ -9,6 +9,9 @@ import com.whereToWatch.WhereToWatch.repos.TeamRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Service
 public class LocationService {
@@ -18,6 +21,20 @@ public class LocationService {
 
     @Autowired
     private TeamRepo teamRepo;
+
+    public Iterable<Location> findLocationByCityAndTeam(String city, String team) {
+        Iterable<Location> locations =  locationRepo.findLocationsByCity(city);
+        List<Location> filteredLocations = new ArrayList<>();
+
+        for (Location location : locations) {
+            if (location.getTeams().contains(team)) {
+                filteredLocations.add(location);
+            }
+        }
+
+        return filteredLocations;
+
+    }
 
     public Iterable<Location> findAllLocationsByCity(String city) {
             return locationRepo.findLocationsByCity(city);
