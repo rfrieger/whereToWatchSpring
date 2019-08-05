@@ -4,10 +4,12 @@ import com.whereToWatch.WhereToWatch.models.Location;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface LocationRepo extends CrudRepository<Location, Integer>  {
 
-    Iterable<Location> findLocationsByCity(String city);
+    List<Location> findLocationsByCity(String city);
 
     Location findLocationByCity(String city);
 

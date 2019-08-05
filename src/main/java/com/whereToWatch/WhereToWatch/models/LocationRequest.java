@@ -7,7 +7,6 @@ public class LocationRequest {
     private String description;
     private String city;
     private String address;
-    private String team;
 
     public LocationRequest(Integer location_id, String name, String description, String city, String address, String team) {
         this.location_id = location_id;
@@ -15,7 +14,6 @@ public class LocationRequest {
         this.description = description;
         this.city = city;
         this.address = address;
-        this.team = team;
     }
 
     public LocationRequest() {}
@@ -60,11 +58,4 @@ public class LocationRequest {
         this.address = address;
     }
 
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
 }

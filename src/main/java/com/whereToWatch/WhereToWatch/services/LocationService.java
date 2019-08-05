@@ -23,20 +23,22 @@ public class LocationService {
     private TeamRepo teamRepo;
 
     public Iterable<Location> findLocationByCityAndTeam(String city, String team) {
-        Iterable<Location> locations =  locationRepo.findLocationsByCity(city);
+        List<Location> locations =  locationRepo.findLocationsByCity(city);
         List<Location> filteredLocations = new ArrayList<>();
+        System.out.println(locations.size());
 
         for (Location location : locations) {
-            if (location.getTeams().contains(team)) {
-                filteredLocations.add(location);
+            if(location.getTeams().size()>0) {
+                if (location.getTeams().get(0).getName().equals(team)) {
+                    filteredLocations.add(location);
+                }
             }
         }
-
         return filteredLocations;
-
     }
 
-    public Iterable<Location> findAllLocationsByCity(String city) {
+
+    public List<Location> findAllLocationsByCity(String city) {
             return locationRepo.findLocationsByCity(city);
     }
 
@@ -61,7 +63,14 @@ public class LocationService {
 
      }
 
-
-
-
+     public Iterable<Location> findLocationsbyTeam(String team){
+        Team tempTeam = new Team();
+        tempTeam = teamRepo.findTeamByName(team);
+        List<Location> locations = new ArrayList<>();
+        for(Location location: tempTeam.getLocations()) {
+            System.out.println(location);
+            locations.add(location);
+        }
+        return locations;
+    }
 }
