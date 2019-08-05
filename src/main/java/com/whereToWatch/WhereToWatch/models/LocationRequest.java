@@ -1,38 +1,22 @@
 package com.whereToWatch.WhereToWatch.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+public class LocationRequest {
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-public class Location {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer location_id;
     private String name;
     private String description;
     private String city;
     private String address;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-                fetch = FetchType.LAZY,
-                mappedBy = "locations")
-    @JsonIgnoreProperties("locations")
-    private List<Team> teams = new ArrayList<>();
-
-    public Location(){};
-
-    public Location(String name, String description, String city, String team, String address) {
-
+    public LocationRequest(Integer location_id, String name, String description, String city, String address, String team) {
+        this.location_id = location_id;
         this.name = name;
         this.description = description;
         this.city = city;
         this.address = address;
-
     }
+
+    public LocationRequest() {}
 
     public Integer getLocation_id() {
         return location_id;
@@ -66,7 +50,6 @@ public class Location {
         this.city = city;
     }
 
-
     public String getAddress() {
         return address;
     }
@@ -75,11 +58,4 @@ public class Location {
         this.address = address;
     }
 
-    public List<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
-    }
 }
