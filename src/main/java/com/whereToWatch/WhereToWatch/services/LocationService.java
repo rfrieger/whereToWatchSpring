@@ -30,6 +30,7 @@ public class LocationService {
         for (Location location : locations) {
             if(location.getTeams().size()>0) {
                 if (location.getTeams().get(0).getName().equals(team)) {
+
                     filteredLocations.add(location);
                 }
             }
@@ -68,7 +69,6 @@ public class LocationService {
         tempTeam = teamRepo.findTeamByName(team);
         List<Location> locations = new ArrayList<>();
         for(Location location: tempTeam.getLocations()) {
-            System.out.println(location);
             locations.add(location);
         }
         return locations;
