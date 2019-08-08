@@ -16,12 +16,12 @@ public class TeamController {
     public TeamService teamService;
 
 
-    @GetMapping("api/team/{name}")
+    @GetMapping("team/{name}")
     public Team findByLocation(@PathVariable String name) {
         return teamService.findTeamByName(name);
     }
 
-    @PostMapping("api/team")
+    @PostMapping("team")
     public Team addTeam(@RequestBody TeamRequest teamRequest) {
         return teamService.addTeam(teamRequest);
     }
