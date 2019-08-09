@@ -28,7 +28,7 @@ spring:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
   datasource:
     platform:
     url: jdbc:mysql://bf665299e38f73:0d1c73eb@us-cdbr-iron-east-02.cleardb.net/heroku_34709b4d7d7cffe?reconnect=true
