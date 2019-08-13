@@ -1,7 +1,6 @@
 package com.whereToWatch.WhereToWatch.repos;
 
 import com.whereToWatch.WhereToWatch.models.Location;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +15,9 @@ public interface LocationRepo extends CrudRepository<Location, Integer>  {
     Location findLocationByCity(String city);
 
 
-//    SELECT m FROM Machine m WHERE m.machinePK.machineId = 10
-
+//    SELECT *  FROM location
+//    INNER JOIN location_table ON location.id = location_table.location.id
+//    INNER JOIN team ON location_table.team.id = team.id
+//    WHERE team.name = this.team;
 
 }
